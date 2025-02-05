@@ -411,7 +411,7 @@ module Make (Pclock : Mirage_clock.PCLOCK) (Time : Mirage_time.S) (Stack : Tcpip
     `Single (crts, key)
 
   let https ?stop ~port ?(prefix= "") stack
-    ?(cfg= Tls.Config.server ~certificates:localhost_certificate ())
+    ?(cfg= Rresult.R.failwith_error_msg @@ Tls.Config.server ~certificates:localhost_certificate ())
     ?error_handler:(user's_error_handler : error_handler = Error_handler.default) (user's_dream_handler : Message.handler) =
     initialize ~setup_outputs:ignore ;
     let connect flow =
