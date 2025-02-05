@@ -405,7 +405,7 @@ module Make (Stack : Tcpip.Stack.V4V6) = struct
     `Single (crts, key)
 
   let https ?stop ~port ?(prefix= "") stack
-    ?(cfg= Tls.Config.server ~certificates:localhost_certificate () |> Result.get_ok)
+    ?(cfg= Rresult.R.failwith_error_msg @@ Tls.Config.server ~certificates:localhost_certificate ())
     ?error_handler:(user's_error_handler : error_handler = Error_handler.default) (user's_dream_handler : Message.handler) =
     initialize ~setup_outputs:ignore ;
     let connect flow =
