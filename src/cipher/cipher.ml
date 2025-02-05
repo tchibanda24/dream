@@ -108,9 +108,9 @@ struct
         let plaintext =
           Mirage_crypto.AES.GCM.authenticate_decrypt
             ~key
-            ~nonce:(ciphertext)
+            ~nonce:(Cstruct.to_string @@ Cstruct.of_string ~off:1 ~len:12 ciphertext)
             ?adata
-            (ciphertext)
+            (Cstruct.to_string @@ Cstruct.of_string ~off:13 ciphertext)
         in
         match plaintext with
         | None -> None
