@@ -55,7 +55,7 @@ let now () =
 
 let () =
   Random.initialize (fun () ->
-    Mirage_crypto_rng_unix.use_default ())
+    Mirage_crypto_rng_unix.use_getentropy ())
 
 module Session =
 struct
