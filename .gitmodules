@@ -1,0 +1,6 @@
+[submodule "src/paf"]
+	path = src/paf
+	url = git@github.com:tchibanda24/paf-le-chien.git
+[submodule "vendor/paf"]
+	path = vendor/paf
+	url = git@github.com:tchibanda24/paf-le-chien.git
