@@ -39,20 +39,6 @@ module H2_lwt_unix = struct
         >>= fun ssl_client ->
         create_connection ?config ?push_handler ~error_handler ssl_client
     end
-
-    let error_handler = function
-      | `Invalid_response_body_length _resp ->
-        Log.error ~domain_name ~message:"invalid response body length\n%!"
-      | `Exn _exn -> Log.info ~domain_name:"GRPClient" ~message:"exception!\n%!"
-      | `Malformed_response s ->
-        Log.error ~domain_name
-          ~message:(Printf.sprintf "malformed response: %s\n%!" s)
-      | `Protocol_error (code, s) ->
-        Log.error ~domain_name
-          ~message:
-            (Printf.sprintf "protocol error: %s, %s\n"
-               (H2.Error_code.to_string code)
-               s)
   end
 end
 
