@@ -18,6 +18,7 @@ depends: [
   "gluten"
   "gluten-lwt-unix"
   "h2" {< "0.13.0"}
+  "h2-lwt"
   "httpun" {< "0.2.0"}
   "httpun-lwt-unix"
   "httpun-ws"
