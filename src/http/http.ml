@@ -14,6 +14,7 @@ module Stream = Dream_pure.Stream
 (* TODO In serious need of refactoring because of all the different handlers. *)
 module H2_lwt_unix = struct
   module Config = H2.Config
+  open Lwt.Infix
 
   module Server = struct
     include H2_lwt.Server (Gluten_lwt_unix.Server)
